@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비구조화 할당</title>
+</head>
+<body>
+    <script>
+        //ES5
+        var user1 = {
+            firstName : 'gildong',
+            lastName: 'hong'
+        }
+
+        var firstName1 = user1.firstName;
+        var lastName1 = user1.lastName;
+
+        console.log(firstName1 + lastName1);
+
+        //ES6
+        const user2 = {
+            firstName: 'gildong',
+            lastName: 'hong'
+        }
+        const {firstName, lastName} = user2;
+        console.log(`${firstName} ${lastName}`);
+
+        const users = [
+            {
+                id: 1,
+                name: 'gildong'
+            },  
+            {
+                id: 2,
+                name: 'gilsan'
+            },  
+            {
+                id: 3,
+                name: 'gilchun'
+            }
+        ]
+
+        const [u1, u2, u3] = users;
+        console.log(u1);
+        console.log(u2);
+        console.log(u3);
+        
+        //두 번째 객체에 있는 id값만 추출
+        const [, {id}] = users;
+        console.log(id);
+
+        //중첩 객체에서의 비구조화 할당
+        const user6 = {
+            name: 'lee',
+            address: {
+                zipCode:'11111',
+                city: 'soeul'
+            }
+        }
+
+        const{address: {city}} = user6;
+        console.log(city);
+
+        //객체 비구조화 할당에서도 Rest파라미터와 혼용 가능
+        const test = {
+            x:1,
+            y:2,
+            z:3
+        }
+        const{x, ...rest} = test;
+        console.log(x);
+        console.log(rest);
+    </script>
+</body>
+</html>
